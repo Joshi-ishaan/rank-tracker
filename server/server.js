@@ -5,7 +5,7 @@ require('dotenv').config()
 
 const app = express()
 
-app.use(cors({ origin: 'http://localhost:5173' }))
+app.use(cors({ origin: ['http://localhost:5173', 'https://rank-tracker-kappa.vercel.app'] }))
 app.use(express.json())
 
 const PORT = process.env.PORT || 3000

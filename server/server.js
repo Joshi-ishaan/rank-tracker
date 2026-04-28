@@ -5,7 +5,15 @@ require('dotenv').config()
 
 const app = express()
 
-app.use(cors({ origin: ['http://localhost:5173', 'https://rank-tracker-kappa.vercel.app'] }))
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || origin.endsWith('.vercel.app') || origin === 'http://localhost:5173') {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}))
 app.use(express.json())
 
 const PORT = process.env.PORT || 3000

@@ -17,7 +17,7 @@ function App() {
     const keywordArray = keywords.split('\n').map(k => k.trim()).filter(k => k !== '')
 
     try {
-      const response = await axios.post('http://localhost:3000/analyze-bulk', {
+      const response = await axios.post('https://rank-tracker-bwoe.onrender.com/analyze-bulk', {
         keywords: keywordArray,
         location: cleanLocation,
         website: website.trim().replace(/^https?:\/\//, '').replace(/\/$/, ''),
